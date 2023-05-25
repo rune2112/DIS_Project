@@ -1,8 +1,8 @@
 # DIS_Project
-##To run the app:
-##Run the script "run.py" in the root folder
+To run the app:
+Run the script "run.py" in the root folder
 
-##To create the database, run:
+To create the database, run:
 ```
 DROP TABLE IF EXISTS Laptops;
 CREATE TABLE Laptops(
