@@ -21,7 +21,7 @@ CREATE TABLE Laptops(
     Price_Euros numeric,
     PRIMARY KEY (L_ID)
 );
-COPY Laptops(L_ID, Company, Product, TypeName, Inches, Resolution, CPU, RAM, Memory, GPU, OpSys, Weight, Price_Euros) FROM '/home/rune/Documents/DIS/Project/CLEANED_laptop_price.csv' DELIMITER ',';
+COPY Laptops(L_ID, Company, Product, TypeName, Inches, Resolution, CPU, RAM, Memory, GPU, OpSys, Weight, Price_Euros) FROM '%PATH%/CLEANED_laptop_price.csv' DELIMITER ',';
 
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users(
