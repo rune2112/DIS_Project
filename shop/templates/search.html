@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <br>
+        <br>
+    </div>
+    <div class="content-section">
+        <form method="POST" action="" class="search-section">
+            {{ form.csrf_token }}
+            <h4>Search</h4>
+            <table>
+                <tr>
+                    <td class="little-padding-right">{{ form.company.label(class="form-control-label") }}</td>
+                    <td>{{ form.company(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.product.label(class="form-control-label") }}</td>
+                    <td>{{ form.product(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.typename.label(class="form-control-label") }}</td>
+                    <td>{{ form.typename(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.inches.label(class="form-control-label") }}</td>
+                    <td>{{ form.inches(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.resolution.label(class="form-control-label") }}</td>
+                    <td>{{ form.resolution(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.cpu.label(class="form-control-label") }}</td>
+                    <td>{{ form.cpu(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.ram.label(class="form-control-label") }}</td>
+                    <td>{{ form.ram(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.memory.label(class="form-control-label") }}</td>
+                    <td>{{ form.memory(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.gpu.label(class="form-control-label") }}</td>
+                    <td>{{ form.gpu(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.opsys.label(class="form-control-label") }}</td>
+                    <td>{{ form.opsys(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.weight.label(class="form-control-label") }}</td>
+                    <td>{{ form.weight(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.price_euros.label(class="form-control-label") }}</td>
+                    <td>{{ form.price_euros(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.submit(class="btn btn-outline-info") }}</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    {% if results != None %}
+    <div class="content-section fit-width">	
+        <p>Results:</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Product</th>
+              <th scope="col">TypeName</th>
+              <th scope="col">Inches</th>
+              <th scope="col">Resolution</th>
+              <th scope="col">CPU</th>
+              <th scope="col">RAM (GB)</th>
+              <th scope="col">Memory</th>
+              <th scope="col">GPU</th>
+              <th scope="col">Operating System</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Price (Euros)</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for n in results %}
+            <tr>
+              <th scope="row">{{n[1]}}</th>
+              <td>{{n[2]}}</td>
+              <td>{{n[3]}}</td>
+              <td>{{n[4]}}</td>
+              <td>{{n[5]}}</td>
+              <td>{{n[6]}}</td>
+              <td>{{n[7]}}</td>
+              <td>{{n[8]}}</td>
+              <td>{{n[9]}}</td>
+              <td>{{n[10]}}</td>
+              <td>{{n[11]}}</td>
+              <td>{{n[12]}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>  
+      </div>
+      {% endif %}
+
+{% endblock content %}

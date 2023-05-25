@@ -1,0 +1,53 @@
+/*
+* {
+    border: 1px solid red;
+}
+
+.search-section {
+    column-count: 2;
+}
+*/
+.fit-width {
+    width: fit-content;
+}
+
+.little-padding-left {
+    padding-left: 50px;
+}
+
+.little-padding-right {
+    padding-right: 20px;
+}
+
+td {
+    padding: 10px 0;
+}
+
+.form-control-lg {
+    width: 200px;
+    height: 30px;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 20px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #000000;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}

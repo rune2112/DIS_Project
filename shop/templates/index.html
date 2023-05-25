@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIS Project</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Hello {{username}}!</h1>
+    <h2>Welcome to DIS Laptop Shop!</h2>
+    <a class="button" href="{{url_for('User.addUser')}}">Register User</a>
+    <br>
+    <a class="button" href="{{url_for('Login.login')}}">Login</a>
+    <br>
+    <a class="button" href="{{url_for('User.search')}}">Search</a>
+</body>
+</html>
