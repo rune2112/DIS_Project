@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 *.csv
+*.json
 
 # User-specific files
 *.rsuser
@@ -399,4 +400,3 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-shop/__init__.py
