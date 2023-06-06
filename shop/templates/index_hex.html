@@ -60,7 +60,15 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#men">Macbooks</a></li>
                             <li class="scroll-to-section"><a href="#women">PCs</a></li>
-                            <li class="scroll-to-section"><a href="#explore">Log In</a></li>
+                            {% if username == "Guest" %}
+                            <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Log In</a></li>
+                            {% endif %}
+                            {% if username != "Guest" %}
+                            <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Cart</a></li>
+                            <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Profile</a></li>
+                            
+                            {% endif %}
+
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

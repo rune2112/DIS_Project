@@ -26,7 +26,9 @@
             </small>
         </form>
     </div>
-
-	
+    <small>
+        Don't have a user?
+        <a href="{{ url_for('User.addUser') }}">Register</a>
+    </small>
  	
 {% endblock content %}
