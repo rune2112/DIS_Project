@@ -115,3 +115,15 @@ def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory
     cur.execute(sql, (max_id + 1, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, userN))
     conn.commit()
     cur.close()
+
+
+def get_laptops_from_user(current_user):
+    cur = conn.cursor()
+    userN = current_user[1]
+    sql = """
+    SELECT * FROM laptops
+    WHERE username = %s;
+    """
+    cur.execute(sql, (userN))
+    res = cur.fetchall()
+    return res
