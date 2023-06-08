@@ -34,4 +34,10 @@ CREATE TABLE Users(
     userpassword VARCHAR,
     PRIMARY KEY (u_id)
 );
+
+CREATE TABLE cart(
+	u_id int,
+	l_id int,
+	PRIMARY KEY (u_id)
+);
 ```

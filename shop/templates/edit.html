@@ -4,6 +4,40 @@
         <br>
         <br>
     </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Product</th>
+            <th scope="col">TypeName</th>
+            <th scope="col">Inches</th>
+            <th scope="col">Resolution</th>
+            <th scope="col">CPU</th>
+            <th scope="col">RAM (GB)</th>
+            <th scope="col">Memory</th>
+            <th scope="col">GPU</th>
+            <th scope="col">Operating System</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Price (Euros)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{posting[1]}}</th>
+            <td>{{posting[2]}}</td>
+            <td>{{posting[3]}}</td>
+            <td>{{posting[4]}}</td>
+            <td>{{posting[5]}}</td>
+            <td>{{posting[6]}}</td>
+            <td>{{posting[7]}}</td>
+            <td>{{posting[8]}}</td>
+            <td>{{posting[9]}}</td>
+            <td>{{posting[10]}}</td>
+            <td>{{posting[11]}}</td>
+            <td>{{posting[12]}}</td>
+          </tr>
+        </tbody>
+      </table>  
     <div class="content-section">
         <form method="POST" action="" class="search-section">
             {{ form.csrf_token }}

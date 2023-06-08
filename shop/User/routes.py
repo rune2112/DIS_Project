@@ -80,16 +80,8 @@ def edit(l_id):
         return redirect(url_for('Login.home'))
     else:
         posting = get_laptop_from_id(l_id)
-        #fieldDict = {"company": posting[1], "product": posting[2], "typename": posting[3],
-        #             "inches": float(posting[4]), "resolution": posting[5], "cpu": posting[6],
-        #             "ram": float(posting[7]), "memory": posting[8], "gpu": posting[9],
-        #             "opsys": posting[10], "weight": float(posting[11]), "price_euros": float(posting[12])}
-        #fieldDict = {"company": posting[1], "product": posting[2], "typename": posting[3],
-        #             "resolution": posting[5], "cpu": posting[6],
-        #             "memory": posting[8], "gpu": posting[9],
-        #             "opsys": posting[10]}
-        #form = EditForm(formdata=MultiDict(fieldDict))
         form = EditForm()
+        """
         form.company.data = posting[1]
         form.product.data = posting[2]
         form.typename.data = posting[3]
@@ -102,14 +94,16 @@ def edit(l_id):
         form.opsys.data = posting[10]
         form.weight.data = posting[11]
         form.price_euros.data = posting[12]
-        
+        """
         print(type(posting[4]))
         print(f"VALIDATION?????\n{form}")
         for a, b in form.errors.items():
             print(a, b)
-        if form.validate_on_submit():
+        if form.validate():
             company = form.company.data
-            print(f"VALIDATED COMPANY: {company}")
+            print(f"VALIDATED COMPANY: {form.company.data}")
+            
+            print(form.Meta)
             product = form.product.data
             typename = form.typename.data
             inches = form.inches.data

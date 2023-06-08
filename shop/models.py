@@ -154,12 +154,26 @@ def get_laptop_from_id(l_id):
 
 def update_laptop(l_id, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros):
     cur = conn.cursor()
+    args = [company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros]
+    usedArgs = []
+    columns = ["company", "product", "typename", "inches", "resolution", "cpu", "ram", "memory", "gpu", "opsys", "weight", "price_euros"]
+    formatArr = []
     sql = """
     UPDATE laptops
-    SET company = %s, product = %s, typename = %s, inches = %s, resolution = %s, cpu = %s, ram = %s, memory = %s, gpu = %s, opsys = %s, weight = %s, price_euros = %s
-    WHERE l_id = %s;
+    SET
     """
-    cur.execute(sql, (company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, l_id))
+    for i in range(len(args)):
+        if len(args[i]) > 0:
+            sql += columns[i] + " = %s, "
+            formatArr.append(i)
+    sql = sql[:-2]
+    sql += " WHERE l_id = %s;"
+    for i in formatArr:
+        usedArgs.append(args[i])
+    usedArgs.append(l_id)
+    print(f"SQL: {sql}")
+    print(f"USED_ARGS: {usedArgs}")
+    cur.execute(sql, (usedArgs))
     conn.commit()
     cur.close()
 
