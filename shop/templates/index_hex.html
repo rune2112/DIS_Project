@@ -60,11 +60,13 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#men">Macbooks</a></li>
                             <li class="scroll-to-section"><a href="#women">PCs</a></li>
+                            <li class="scroll-to-section"><a href="{{ url_for('User.search') }}">Search</a></li>
                             {% if username == "Guest" %}
                             <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Log In</a></li>
                             {% endif %}
                             {% if username != "Guest" %}
                             <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Cart</a></li>
+                            <li class="scroll-to-section"><a href="{{ url_for('User.sell') }}">Postings</a></li>
                             <li class="scroll-to-section"><a href="{{ url_for('Login.login') }}">Profile</a></li>
                             
                             {% endif %}
@@ -114,7 +116,7 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>PC</h4>
                                                 <p>Browse fast and cheap personal computers</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
+                                                    <li class="scroll-to-section"><a href="#women">Discover More</a></li>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +136,7 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>Mac</h4>
                                                 <p>Browse the best laptops from Apple</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
+                                                    <li class="scroll-to-section"><a href="#men">Discover More</a></li>
                                                 </div>
                                             </div>
                                         </div>

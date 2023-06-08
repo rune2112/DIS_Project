@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from shop.forms import AddUserForm, SearchForm, SellForm
 from shop import conn, bcrypt
-from shop.models import insert_user, search_for_laptop, sell_laptop
+from shop.models import insert_user, search_for_laptop, sell_laptop, get_laptops_from_user
 from flask_login import current_user, login_required
 
 
@@ -65,3 +65,9 @@ def sell():
         return redirect(url_for('Login.home'))
     else:
         return render_template('sellLaptop.html', title="Sell", form=form)
+    
+@User.route("/profil", methods=['GET', 'POST'])
+def profil():
+    res = get_laptops_from_user(current_user)
+    print(res)
+    return render_template('profil.html', title="Profil", res = res)
