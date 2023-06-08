@@ -120,10 +120,13 @@ def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory
 def get_laptops_from_user(current_user):
     cur = conn.cursor()
     userN = current_user[1]
+    print(f"PROFILE: {userN}")
+    print(f"{type(userN)}")
     sql = """
     SELECT * FROM laptops
     WHERE username = %s;
     """
-    cur.execute(sql, (userN))
+    cur.execute(sql, (userN,))
     res = cur.fetchall()
+    cur.close()
     return res
