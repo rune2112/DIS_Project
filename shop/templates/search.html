@@ -69,6 +69,7 @@
               <th scope="col">Operating System</th>
               <th scope="col">Weight</th>
               <th scope="col">Price (Euros)</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -86,6 +87,7 @@
               <td>{{n[10]}}</td>
               <td>{{n[11]}}</td>
               <td>{{n[12]}}</td>
+              <td><a href="{{ url_for('User.addcart') }}">Add To Cart</a> </td>
             </tr>
           {% endfor %}
           </tbody>

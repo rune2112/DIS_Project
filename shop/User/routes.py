@@ -81,29 +81,8 @@ def edit(l_id):
     else:
         posting = get_laptop_from_id(l_id)
         form = EditForm()
-        """
-        form.company.data = posting[1]
-        form.product.data = posting[2]
-        form.typename.data = posting[3]
-        form.inches.data = posting[4]
-        form.resolution.data = posting[5]
-        form.cpu.data = posting[6]
-        form.ram.data = posting[7]
-        form.memory.data = posting[8]
-        form.gpu.data = posting[9]
-        form.opsys.data = posting[10]
-        form.weight.data = posting[11]
-        form.price_euros.data = posting[12]
-        """
-        print(type(posting[4]))
-        print(f"VALIDATION?????\n{form}")
-        for a, b in form.errors.items():
-            print(a, b)
         if form.validate():
             company = form.company.data
-            print(f"VALIDATED COMPANY: {form.company.data}")
-            
-            print(form.Meta)
             product = form.product.data
             typename = form.typename.data
             inches = form.inches.data
@@ -119,3 +98,9 @@ def edit(l_id):
             return redirect(url_for('User.profil'))
         else:
             return render_template('edit.html', title="Edit", posting = posting, form = form)
+
+@User.route("/addcart")
+def addcart():
+    print("hej")
+    return ("nothing")
+
