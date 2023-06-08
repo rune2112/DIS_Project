@@ -177,3 +177,9 @@ def update_laptop(l_id, company, product, typename, inches, resolution, cpu, ram
     conn.commit()
     cur.close()
 
+def add_to_cart(u_id, l_id):
+    cur = conn.cursor()
+    sql = "INSERT INTO cart(u_id, l_id) VALUES (%s, %s)"
+    cur.execute(sql, (u_id, l_id))
+    conn.commit()
+    cur.close()

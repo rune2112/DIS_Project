@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from shop.forms import AddUserForm, SearchForm, SellForm, EditForm
-from shop import conn, bcrypt
-from shop.models import insert_user, search_for_laptop, sell_laptop, get_laptops_from_user, get_user_from_lid, get_laptop_from_id, update_laptop
+from shop import conn, bcrypt, sessionDetails
+from shop.models import insert_user, search_for_laptop, sell_laptop, get_laptops_from_user, get_user_from_lid, get_laptop_from_id, update_laptop, add_to_cart
 from flask_login import current_user, login_required
 from werkzeug.datastructures import MultiDict
 
@@ -39,9 +39,9 @@ def search():
         weight = form.weight.data
         price_euros = form.price_euros.data
         res = search_for_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros)
-        return render_template('search.html', title="Search", form=form, results=res)
+        return render_template('search.html', title="Search", form=form, results=res, current_user = sessionDetails["id"])
     else:
-        return render_template('search.html', title="Search", form=form, results=None)
+        return render_template('search.html', title="Search", form=form, results=None, current_user = sessionDetails["id"])
 
 @User.route("/sell", methods=['GET', 'POST'])
 @login_required
@@ -99,8 +99,9 @@ def edit(l_id):
         else:
             return render_template('edit.html', title="Edit", posting = posting, form = form)
 
-@User.route("/addcart")
-def addcart():
-    print("hej")
-    return ("nothing")
+@User.route("/<l_id>/addcart")
+def addcart(l_id):
+    u_id = current_user[0]
+    add_to_cart(u_id, l_id)
+    return redirect(url_for('User.search'))
 

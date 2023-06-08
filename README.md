@@ -35,9 +35,11 @@ CREATE TABLE Users(
     PRIMARY KEY (u_id)
 );
 
+DROP TABLE IF EXISTS cart;
 CREATE TABLE cart(
+	c_id int GENERATED ALWAYS AS IDENTITY,
 	u_id int,
 	l_id int,
-	PRIMARY KEY (u_id)
+	PRIMARY KEY (c_id)
 );
 ```
