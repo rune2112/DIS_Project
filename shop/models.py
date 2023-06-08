@@ -97,7 +97,7 @@ def search_for_laptop(company, product, typename, inches, resolution, cpu, ram, 
     result = cur.fetchall()
     return result
 
-def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros):
+def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, current_user):
 
     cur = conn.cursor()
     getmax_sql = """
@@ -105,13 +105,13 @@ def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory
     """
     cur.execute(getmax_sql, ())
     max_id = cur.fetchone()[0]
-    print(f"MAX_ID: {max_id}")
-    print(f"Type: {type(max_id)}")
+    userN = current_user[1]
+    print(f"{userN} is trying to sell a laptop")
     sql = """
     INSERT INTO
-    laptops(l_id, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    laptops(l_id, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, username)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    cur.execute(sql, (max_id + 1, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros))
+    cur.execute(sql, (max_id + 1, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, userN))
     conn.commit()
     cur.close()

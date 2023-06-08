@@ -2,6 +2,7 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from shop.forms import AddUserForm, SearchForm, SellForm
 from shop import conn, bcrypt
 from shop.models import insert_user, search_for_laptop, sell_laptop
+from flask_login import current_user, login_required
 
 
 
@@ -42,7 +43,9 @@ def search():
         return render_template('search.html', title="Search", form=form, results=None)
 
 @User.route("/sell", methods=['GET', 'POST'])
+@login_required
 def sell():
+    print(f"CURRENT USER:{current_user}")
     form = SellForm()
     if form.validate_on_submit():
         company = form.company.data
@@ -57,7 +60,7 @@ def sell():
         opsys = form.opsys.data
         weight = form.weight.data
         price_euros = form.price_euros.data
-        sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros)
+        sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, current_user)
         flash('Laptop has been listed for sale!', 'success')
         return redirect(url_for('Login.home'))
     else:
