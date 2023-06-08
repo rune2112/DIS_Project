@@ -26,6 +26,8 @@ def login():
     if form.validate_on_submit():
         print(f"USERNAME?????  {form.username.data}")
         user = select_user(form.username.data)
+        print(f"USER2: {user[2]}")
+        print(form.password.data)
         if user != None and bcrypt.check_password_hash(user[2], form.password.data):
             print("Logged in")
             login_user(user, remember=form.remember.data)

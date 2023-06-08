@@ -21,9 +21,6 @@ def load_user(user_id):
     else:
         return None
 
-
-
-
 class User(tuple, UserMixin):
     def __init__(self, userData) -> None:
         self.id = userData[0]
@@ -33,21 +30,20 @@ class User(tuple, UserMixin):
     def get_id(self):
         return self.id
     
-
-
-
-def select_user(id):
-    print(f"SELECT USER, ID: {id}")
+def select_user(uid):
+    print(f"SELECT USER, ID: {uid}")
     cur = conn.cursor()
     sql = """
     SELECT * FROM users
     WHERE username = %s
     """
-    cur.execute(sql, (id,))
+    cur.execute(sql, (uid,))
     result = cur.fetchone()
     print(f"QUERY RESULT: {result}")
     user = User(result) if cur.rowcount > 0 else None
-    cur.close@User.route("/search", methods=['GET', 'POST'])
+    cur.close()
+    return user
+
 def search():
     form = SearchForm()
     if form.validate_on_submit():
