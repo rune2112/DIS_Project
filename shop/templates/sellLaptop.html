@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <br>
+        <br>
+    </div>
+    <div class="content-section">
+        <form method="POST" action="" class="search-section">
+            {{ form.csrf_token }}
+            <h4>Sell your laptop</h4>
+            <table>
+                <tr>
+                    <td class="little-padding-right">{{ form.company.label(class="form-control-label") }}</td>
+                    <td>{{ form.company(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.product.label(class="form-control-label") }}</td>
+                    <td>{{ form.product(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.typename.label(class="form-control-label") }}</td>
+                    <td>{{ form.typename(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.inches.label(class="form-control-label") }}</td>
+                    <td>{{ form.inches(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.resolution.label(class="form-control-label") }}</td>
+                    <td>{{ form.resolution(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.cpu.label(class="form-control-label") }}</td>
+                    <td>{{ form.cpu(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.ram.label(class="form-control-label") }}</td>
+                    <td>{{ form.ram(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.memory.label(class="form-control-label") }}</td>
+                    <td>{{ form.memory(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.gpu.label(class="form-control-label") }}</td>
+                    <td>{{ form.gpu(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.opsys.label(class="form-control-label") }}</td>
+                    <td>{{ form.opsys(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td class="little-padding-right">{{ form.weight.label(class="form-control-label") }}</td>
+                    <td>{{ form.weight(class="form-control form-control-lg") }}</td>
+                    <td class="little-padding-left little-padding-right">{{ form.price_euros.label(class="form-control-label") }}</td>
+                    <td>{{ form.price_euros(class="form-control form-control-lg") }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.submit(class="btn btn-outline-info") }}</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+{% endblock content %}

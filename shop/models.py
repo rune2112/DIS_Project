@@ -47,7 +47,26 @@ def select_user(id):
     result = cur.fetchone()
     print(f"QUERY RESULT: {result}")
     user = User(result) if cur.rowcount > 0 else None
-    cur.close()
+    cur.close@User.route("/search", methods=['GET', 'POST'])
+def search():
+    form = SearchForm()
+    if form.validate_on_submit():
+        company = form.company.data
+        product = form.product.data
+        typename = form.typename.data
+        inches = form.inches.data
+        resolution = form.resolution.data
+        cpu = form.cpu.data
+        ram = form.ram.data
+        memory = form.memory.data
+        gpu = form.gpu.data
+        opsys = form.opsys.data
+        weight = form.weight.data
+        price_euros = form.price_euros.data
+        res = search_for_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros)
+        return render_template('search.html', title="Search", form=form, results=res)
+    else:
+        return render_template('search.html', title="Search", form=form, results=None)()
     return user
 
 def insert_user(name, password):
@@ -81,3 +100,22 @@ def search_for_laptop(company, product, typename, inches, resolution, cpu, ram, 
     cur.execute(sql, (usedArgs))
     result = cur.fetchall()
     return result
+
+def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros):
+
+    cur = conn.cursor()
+    getmax_sql = """
+    SELECT MAX(l_id) FROM laptops;
+    """
+    cur.execute(getmax_sql, ())
+    max_id = cur.fetchone()[0]
+    print(f"MAX_ID: {max_id}")
+    print(f"Type: {type(max_id)}")
+    sql = """
+    INSERT INTO
+    laptops(l_id, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    cur.execute(sql, (max_id + 1, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros))
+    conn.commit()
+    cur.close()

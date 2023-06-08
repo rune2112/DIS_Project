@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, SelectField, DecimalField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 
 class LoginForm(FlaskForm):
@@ -28,3 +28,18 @@ class SearchForm(FlaskForm):
     weight = StringField('Weight')
     price_euros = StringField('Price (Euros)')
     submit = SubmitField('Search')
+
+class SellForm(FlaskForm):
+    company = StringField('Company')
+    product = StringField('Product')
+    typename = StringField('TypeName')
+    inches = DecimalField('Inches')
+    resolution = StringField('Resolution')
+    cpu = StringField('CPU')
+    ram = DecimalField('RAM (GB)')
+    memory = StringField('Memory')
+    gpu = StringField('GPU')
+    opsys = StringField('Operating System')
+    weight = DecimalField('Weight')
+    price_euros = DecimalField('Price (Euros)')
+    submit = SubmitField('Sell')
