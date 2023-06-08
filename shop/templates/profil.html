@@ -7,9 +7,9 @@
     <div class="content-section">
         
     </div>
-    {% if results != None %}
+    {% if res|length != 0 %}
     <div class="content-section fit-width">	
-        <p>Results:</p>
+        <p>Laptops:</p>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-          {% for n in results %}
+          {% for n in res %}
             <tr>
               <th scope="row">{{n[1]}}</th>
               <td>{{n[2]}}</td>
