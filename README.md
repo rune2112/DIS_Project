@@ -23,6 +23,10 @@ CREATE TABLE Laptops(
 );
 COPY Laptops(L_ID, Company, Product, TypeName, Inches, Resolution, CPU, RAM, Memory, GPU, OpSys, Weight, Price_Euros) FROM '%PATH%/CLEANED_laptop_price.csv' DELIMITER ',';
 
+ALTER TABLE laptops ADD username VARCHAR;
+
+UPDATE laptops SET username = 'admin';
+
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users(
     u_id int GENERATED ALWAYS AS IDENTITY,
