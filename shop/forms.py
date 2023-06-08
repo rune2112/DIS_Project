@@ -43,3 +43,18 @@ class SellForm(FlaskForm):
     weight = DecimalField('Weight')
     price_euros = DecimalField('Price (Euros)')
     submit = SubmitField('Sell')
+
+class EditForm(FlaskForm):
+    company = StringField('Company')
+    product = StringField('Product')
+    typename = StringField('TypeName')
+    inches = DecimalField('Inches')
+    resolution = StringField('Resolution')
+    cpu = StringField('CPU')
+    ram = DecimalField('RAM (GB)')
+    memory = StringField('Memory')
+    gpu = StringField('GPU')
+    opsys = StringField('Operating System')
+    weight = DecimalField('Weight')
+    price_euros = DecimalField('Price (Euros)')
+    submit = SubmitField('Edit')

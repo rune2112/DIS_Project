@@ -40,12 +40,15 @@
               <td>{{n[10]}}</td>
               <td>{{n[11]}}</td>
               <td>{{n[12]}}</td>
-              <td><a href="{{ url_for('User.sell') }}">Edit Postings</a> </td>
+              <td><a href="{{ url_for('User.edit', l_id = n[0]) }}">Edit Postings</a> </td>
             </tr>
           {% endfor %}
           </tbody>
         </table>  
       </div>
+      {% endif %}
+      {% if res|length == 0 %}
+      <h4>You have not listed any laptops for sale</h4>
       {% endif %}
 
 {% endblock content %}

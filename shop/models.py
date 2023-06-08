@@ -98,7 +98,6 @@ def search_for_laptop(company, product, typename, inches, resolution, cpu, ram, 
     return result
 
 def sell_laptop(company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, current_user):
-
     cur = conn.cursor()
     getmax_sql = """
     SELECT MAX(l_id) FROM laptops;
@@ -130,3 +129,37 @@ def get_laptops_from_user(current_user):
     res = cur.fetchall()
     cur.close()
     return res
+
+def get_user_from_lid(l_id):
+    cur = conn.cursor()
+    sql = """
+    SELECT username FROM laptops
+    WHERE l_id = %s;
+    """
+    cur.execute(sql, (l_id,))
+    res = cur.fetchone()[0]
+    cur.close()
+    return res
+
+def get_laptop_from_id(l_id):
+    cur = conn.cursor()
+    sql = """
+    SELECT * FROM laptops
+    WHERE l_id = %s;
+    """
+    cur.execute(sql, (l_id,))
+    res = cur.fetchone()
+    cur.close()
+    return res
+
+def update_laptop(l_id, company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros):
+    cur = conn.cursor()
+    sql = """
+    UPDATE laptops
+    SET company = %s, product = %s, typename = %s, inches = %s, resolution = %s, cpu = %s, ram = %s, memory = %s, gpu = %s, opsys = %s, weight = %s, price_euros = %s
+    WHERE l_id = %s;
+    """
+    cur.execute(sql, (company, product, typename, inches, resolution, cpu, ram, memory, gpu, opsys, weight, price_euros, l_id))
+    conn.commit()
+    cur.close()
+
