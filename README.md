@@ -1,4 +1,7 @@
 # DIS_Project
+To run the data you must make a DB_cred.json file:
+{"dbname": "postgres", "user": "postgres", "host": "127.0.0.1", "password": "%password for database%"}
+
 To run the app:
 Run the script "run.py" in the root folder
 
