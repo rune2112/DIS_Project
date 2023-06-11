@@ -12,7 +12,7 @@ User = Blueprint("User", __name__)
 
 @User.route("/addUser", methods=['GET', 'POST'])
 def addUser():
-    form = Addurl_forUserForm()
+    form = AddUserForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         username = form.username.data
